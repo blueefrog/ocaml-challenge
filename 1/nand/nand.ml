@@ -8,8 +8,8 @@ if a
     (if b
       then (*b is true*) false
     else true)
-else (* a is false*)
-  false
+  else (* a is false*)
+    false
 
 
 let nand2 (a:bool)(b:bool):
