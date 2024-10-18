@@ -11,16 +11,19 @@ bool=
   | false-> b
 ;;
 
-assert (mux2_1 true true false=true);;
-assert (mux2_1 false true false=false);;
-assert (mux2_1 true false false=false);;
-assert (mux2_1 false false false=false);;
+let mux4_1(s1:bool)(s0:bool)(a0:bool)(a1:bool)(a2:bool)(a3:bool):
+bool=
+mux2_1 s0
+  (*s1=1*)
+  (mux2_1 s1
+      (*s0=1*)a3
+      (*s0=0*)a2)
+  (*s1=0*)
+  (mux2_1 s1
+  (*s0=1*)a1
+  (*s0=0*)a0);;
 
-let mux4(s1:bool)(s0:bool)(a0:bool)(a1:bool)(a2:bool)(a3:bool):
-bool=;;
-
-
-assert(mux4 false false false true false true = false);;
-assert(mux4 false true false true false true = true);;
-assert(mux4 true false false true false true = false);;
-assert(mux4 true true false true false true = true);;
+assert(mux4_1 false false false true false true = false);;
+assert(mux4_1 false true false true false true = true);;
+assert(mux4_1 true false false true false true = false);;
+assert(mux4_1 true true false true false true = true);;
